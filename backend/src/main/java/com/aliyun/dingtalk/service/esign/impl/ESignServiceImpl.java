@@ -87,6 +87,7 @@ public class ESignServiceImpl implements ESignService {
             GetCorpConsoleResponseBody body = corpConsoleWithOptions.getBody();
             return body.getOrgConsoleUrl();
         } catch (TeaException e) {
+            e.printStackTrace();
             throw new InvokeDingTalkException(e.getCode(), e.getMessage());
 
         } catch (Exception e) {
@@ -113,6 +114,7 @@ public class ESignServiceImpl implements ESignService {
 
             return authUrlResponse.getBody();
         } catch (TeaException e) {
+            e.printStackTrace();
             throw new InvokeDingTalkException(e.getCode(), e.getMessage());
 
         } catch (Exception e) {
@@ -171,6 +173,7 @@ public class ESignServiceImpl implements ESignService {
             ProcessStartResponse processStartResponse = client.processStartWithOptions(processStartRequest, processStartHeaders, new RuntimeOptions());
             return processStartResponse.getBody();
         } catch (TeaException e) {
+            e.printStackTrace();
             throw new InvokeDingTalkException(e.getCode(), e.getMessage());
 
         } catch (Exception e) {
@@ -204,6 +207,7 @@ public class ESignServiceImpl implements ESignService {
             return body.getResult();
 
         } catch (TeaException e) {
+            e.printStackTrace();
             throw new InvokeDingTalkException(e.getCode(), e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
@@ -229,6 +233,7 @@ public class ESignServiceImpl implements ESignService {
 
 
         } catch (TeaException e) {
+            e.printStackTrace();
             throw new InvokeDingTalkException(e.getCode(), e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
@@ -259,6 +264,7 @@ public class ESignServiceImpl implements ESignService {
 
 
         } catch (TeaException e) {
+            e.printStackTrace();
             throw new InvokeDingTalkException(e.getCode(), e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
@@ -280,6 +286,7 @@ public class ESignServiceImpl implements ESignService {
             return body;
 
         } catch (TeaException e) {
+            e.printStackTrace();
             throw new InvokeDingTalkException(e.getCode(), e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
@@ -324,6 +331,7 @@ public class ESignServiceImpl implements ESignService {
             CreateProcessResponse processWithOptions = client.createProcessWithOptions(processStartRequest, processStartHeaders, new RuntimeOptions());
             return processWithOptions.getBody();
         } catch (TeaException e) {
+            e.printStackTrace();
             throw new InvokeDingTalkException(e.getCode(), e.getMessage());
 
         } catch (Exception e) {
@@ -362,6 +370,7 @@ public class ESignServiceImpl implements ESignService {
             }
 
         } catch (TeaException e) {
+            e.printStackTrace();
             throw new InvokeDingTalkException(e.getCode(), e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
@@ -390,6 +399,7 @@ public class ESignServiceImpl implements ESignService {
             }
 
         } catch (TeaException e) {
+            e.printStackTrace();
             throw new InvokeDingTalkException(e.getCode(), e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
@@ -446,6 +456,7 @@ public class ESignServiceImpl implements ESignService {
 
             return resultMap;
         } catch (TeaException e) {
+            e.printStackTrace();
             throw new InvokeDingTalkException(e.getCode(), e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
@@ -472,6 +483,7 @@ public class ESignServiceImpl implements ESignService {
             return body;
 
         } catch (TeaException e) {
+            e.printStackTrace();
             throw new InvokeDingTalkException(e.getCode(), e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
