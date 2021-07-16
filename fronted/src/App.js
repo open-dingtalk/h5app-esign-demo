@@ -27,6 +27,18 @@ function App() {
         });
     }
 
+    const getCorpAuthUrl = () => {
+        // 获取授权地址
+        axios(domain + '/esign/corp/auth?authCorpId=' + corpId
+        ).then(function (response) {
+            // alert(JSON.stringify(response));
+            alert("pcUrl：" + JSON.stringify(response.data.data.pcUrl))
+            alert("mobileUrl：" + JSON.stringify(response.data.data.mobileUrl))
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+
 
     const uploadFile = () => {
         // 创建签署流程
@@ -111,6 +123,7 @@ function App() {
         <div className="App">
             {/*<header className="App-header">*/}
             <button onClick={initData}>服务商数据初始化</button>
+            <button onClick={getCorpAuthUrl}>获取授权地址</button>
             <button onClick={uploadFile}>上传文件</button>
             <button onClick={createESignProcess}>创建签署流程</button>
             <button onClick={getESignProcessFiles}>获取签署完成的合同列表</button>
