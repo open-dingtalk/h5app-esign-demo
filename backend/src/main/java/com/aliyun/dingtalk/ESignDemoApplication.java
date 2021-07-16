@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class H5AppApproveApplication {
+public class ESignDemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(H5AppApproveApplication.class, args);
+        SpringApplication.run(ESignDemoApplication.class, args);
     }
 
 }

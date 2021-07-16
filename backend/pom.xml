@@ -107,7 +107,7 @@
 				<version>${spring-boot.version}</version>
 				<configuration>
 					<includeSystemScope>true</includeSystemScope>
-					<mainClass>com.aliyun.dingtalk.H5AppApproveApplication</mainClass>
+					<mainClass>com.aliyun.dingtalk.ESignDemoApplication</mainClass>
 					<layout>ZIP</layout>
 					<excludes>
 						<exclude>

@@ -18,7 +18,7 @@ public class UrlConstant {
     public static final String USER_GET_URL = "https://oapi.dingtalk.com/topapi/v2/user/get";
 
     /**
-     * 发起审批实例的接口url
+     * 发起审批实例的接口 url
      */
     public static final String GET_PERMANENT_CODE_URL = "https://oapi.dingtalk.com/service/get_permanent_code?suite_access_token=SUITE_ACCESS_TOKEN";
 
@@ -28,12 +28,12 @@ public class UrlConstant {
     public static final String SUITE_ACCESS_TOKEN_URL = "https://oapi.dingtalk.com/service/get_suite_token";
 
     /**
-     * 激活企业授权的应用
+     * 激活企业授权的应用 url
      */
     public static final String ACTIVATE_SUITE_URL = "https://oapi.dingtalk.com/service/activate_suite?suite_access_token=SUITE_ACCESS_TOKEN";
 
     /**
-     * 获取第三方应用授权企业的access_token
+     * 获取第三方应用授权企业的access_token url
      */
     public static final String GET_CORP_ACCESS_TOKEN_URL = "https://oapi.dingtalk.com/service/get_corp_token";
 }

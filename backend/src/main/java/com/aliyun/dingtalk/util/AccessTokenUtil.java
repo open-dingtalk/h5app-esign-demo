@@ -63,7 +63,7 @@ public class AccessTokenUtil {
      * @return
      * @throws RuntimeException
      */
-    public static String getSuiteAccessToken(String suiteKey, String suiteSecret) throws RuntimeException {
+    public static String getSuiteAccessToken(String suiteKey, String suiteSecret) throws InvokeDingTalkException {
         try {
             String suiteTicket = getSuiteTicket();
             DingTalkClient client = new DefaultDingTalkClient(UrlConstant.SUITE_ACCESS_TOKEN_URL);

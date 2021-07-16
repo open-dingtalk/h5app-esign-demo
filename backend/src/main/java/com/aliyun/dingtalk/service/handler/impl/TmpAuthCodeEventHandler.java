@@ -35,7 +35,6 @@ public class TmpAuthCodeEventHandler implements EventHandler {
 
         String suiteAccessToken = AccessTokenUtil.getSuiteAccessToken(appConfig.getSuiteKey(), appConfig.getSuiteSecret());
 
-
         OapiServiceGetPermanentCodeResponse permanentCode = getPermanentCode(eventJson, suiteAccessToken);
 
         activateSuite(permanentCode, suiteAccessToken);
