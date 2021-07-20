@@ -2,9 +2,8 @@ package com.aliyun.dingtalk.factory;
 
 import com.aliyun.dingtalk.config.ApplicationContextHolder;
 import com.aliyun.dingtalk.service.handler.EventHandler;
-import com.aliyun.dingtalk.service.handler.impl.CheckUrlEventHandler;
-import com.aliyun.dingtalk.service.handler.impl.SuiteKeyEventHandler;
 import com.aliyun.dingtalk.service.handler.impl.SuiteTicketEventHandler;
+import com.aliyun.dingtalk.service.handler.impl.SuiteAuthCodeEventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,10 +18,16 @@ public class SuiteEventHandlerFactory extends AbstractEventHandlerFactory {
 
     @Override
     public EventHandler getEventHandler(String eventType) {
-        if ("check_update_suite_url".equals(eventType)) {
-            return applicationContextHolder.getApplicationContext().getBean(SuiteKeyEventHandler.class);
-        } else {
+        if ("suite_ticket".equalsIgnoreCase(eventType)) {
             return applicationContextHolder.getApplicationContext().getBean(SuiteTicketEventHandler.class);
+        } else if ("tmp_auth_code".equals(eventType)) {
+            // http推送方式授权应用
+            return applicationContextHolder.getApplicationContext().getBean(SuiteAuthCodeEventHandler.class);
+        } else if ("org_suite_auth".equals(eventType)) {
+            // syncHttp推送方式授权应用
+            return applicationContextHolder.getApplicationContext().getBean(SuiteAuthCodeEventHandler.class);
+        } else {
+            throw new RuntimeException("tmp eventType not match！");
         }
     }
 }

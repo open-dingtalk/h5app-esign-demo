@@ -2,6 +2,7 @@ package com.aliyun.dingtalk.service.handler.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.aliyun.dingtalk.service.handler.EventHandler;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
@@ -26,13 +27,19 @@ public class SuiteTicketEventHandler implements EventHandler {
      */
     @Override
     public void handler(JSONObject eventJson) {
+
+        String suiteTicket = eventJson.getString("SuiteTicket");
+        if (StringUtils.isBlank(suiteTicket)) {
+            JSONObject bizData = eventJson.getJSONObject("biz_data");
+            suiteTicket = bizData.getString("suiteTicket");
+        }
         Properties properties = new Properties();
         String fileName = "application.properties";
         Resource resource = new ClassPathResource(fileName);
         try {
             PathResource pathResource = new PathResource(resource.getURI());
             properties.load(resource.getInputStream());
-            properties.setProperty("dingtalk.suite_ticket", eventJson.getString("SuiteTicket"));
+            properties.setProperty("dingtalk.suite_ticket", suiteTicket);
             properties.store(pathResource.getOutputStream(), "");
         } catch (IOException e) {
             e.printStackTrace();

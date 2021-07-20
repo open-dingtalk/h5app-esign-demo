@@ -24,10 +24,8 @@ public class EventHandlerFactoryProducer {
         if (eventType.startsWith("check_url") || eventType.startsWith("check_create_suite_url") || eventType.startsWith("check_update_suite_url")) {
             // 测试回调url事件
             return applicationContextHolder.getApplicationContext().getBean(CheckUrlEventHandlerFactory.class);
-        } else if (eventType.startsWith("suite")) {
+        } else if (eventType.startsWith("suite") || eventType.startsWith("tmp_auth_code") || eventType.startsWith("org_suite_auth")) {
             return applicationContextHolder.getApplicationContext().getBean(SuiteEventHandlerFactory.class);
-        } else if (eventType.startsWith("tmp_auth_code")) {
-            return applicationContextHolder.getApplicationContext().getBean(TmpEventHandlerFactory.class);
         }
 //        else if (eventType.startsWith("bpms")) {
 //            // 审批事件

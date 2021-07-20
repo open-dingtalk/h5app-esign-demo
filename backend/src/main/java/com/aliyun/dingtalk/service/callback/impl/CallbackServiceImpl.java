@@ -1,6 +1,7 @@
 package com.aliyun.dingtalk.service.callback.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.aliyun.dingtalk.config.AppConfig;
 import com.aliyun.dingtalk.factory.EventHandlerFactoryProducer;
@@ -10,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
 import java.util.Map;
 
 @Slf4j
@@ -34,9 +36,19 @@ public class CallbackServiceImpl implements CallbackService {
             JSONObject eventJson = JSON.parseObject(decryptMsg);
             log.info("eventJson: {}", eventJson);
             String eventType = eventJson.getString("EventType");
-
             // 3. 根据EventType分类处理
-            eventHandlerFactoryProducer.getEventHandlerFactory(eventType).getEventHandler(eventType).handler(eventJson);
+            if (eventType.equalsIgnoreCase("SYNC_HTTP_PUSH_HIGH") || eventType.equalsIgnoreCase("SYNC_HTTP_PUSH_MEDIUM")) {
+                JSONArray bizData = eventJson.getJSONArray("bizData");
+                Iterator<Object> iterator = bizData.iterator();
+                while (iterator.hasNext()) {
+                    JSONObject jsonObject = (JSONObject) iterator.next();
+                    JSONObject biz_data = jsonObject.getJSONObject("biz_data");
+                    eventType = biz_data.getString("syncAction");
+                    eventHandlerFactoryProducer.getEventHandlerFactory(eventType).getEventHandler(eventType).handler(jsonObject);
+                }
+            } else {
+                eventHandlerFactoryProducer.getEventHandlerFactory(eventType).getEventHandler(eventType).handler(eventJson);
+            }
 
             // 4. 返回success的加密数据
             Map<String, String> successMap = callbackCrypto.getEncryptedMap("success");

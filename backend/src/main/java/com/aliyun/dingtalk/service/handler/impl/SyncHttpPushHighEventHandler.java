@@ -14,7 +14,7 @@ import java.util.Properties;
  * 推送suiteTicket
  */
 @Service
-public class SuiteKeyEventHandler implements EventHandler {
+public class SyncHttpPushHighEventHandler implements EventHandler {
 
     /**
      * 接收到推送过来的suiteTicket时保存到application.properties(target里面)
