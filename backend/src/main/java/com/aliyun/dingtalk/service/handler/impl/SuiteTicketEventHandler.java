@@ -12,6 +12,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.util.Properties;
 
@@ -36,13 +37,23 @@ public class SuiteTicketEventHandler implements EventHandler {
         Properties properties = new Properties();
         String fileName = "application.properties";
         Resource resource = new ClassPathResource(fileName);
+        OutputStream outputStream = null;
         try {
             PathResource pathResource = new PathResource(resource.getURI());
+            outputStream = pathResource.getOutputStream();
             properties.load(resource.getInputStream());
             properties.setProperty("dingtalk.suite_ticket", suiteTicket);
             properties.store(pathResource.getOutputStream(), "");
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (outputStream != null) {
+                try {
+                    outputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
