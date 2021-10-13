@@ -41,6 +41,10 @@ https://github.com/open-dingtalk/h5app-esign-demo.git
 
    ![image-20210719105409038](https://img.alicdn.com/imgextra/i1/O1CN01QJWA251xd1GA06mTD_!!6000000006465-2-tps-2878-1588.png)
 
+   配置e签宝数据管理权限：
+
+   ![image-20210719105409039](https://img.alicdn.com/imgextra/i3/O1CN01qBL68C1yFwwOdLjFd_!!6000000006550-2-tps-2822-1014.png)
+   
    添加体验组织进行授权：https://developers.dingtalk.com/document/app/publish-and-install-isvapp
 
    ![image-20210719105555840](https://img.alicdn.com/imgextra/i4/O1CN015zvwqo1WDNSZzfk4O_!!6000000002754-2-tps-2878-1520.png)
