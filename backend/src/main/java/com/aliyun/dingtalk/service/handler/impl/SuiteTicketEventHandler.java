@@ -40,8 +40,8 @@ public class SuiteTicketEventHandler implements EventHandler {
         OutputStream outputStream = null;
         try {
             PathResource pathResource = new PathResource(resource.getURI());
-            outputStream = pathResource.getOutputStream();
             properties.load(resource.getInputStream());
+            outputStream = pathResource.getOutputStream();
             properties.setProperty("dingtalk.suite_ticket", suiteTicket);
             properties.store(pathResource.getOutputStream(), "");
         } catch (IOException e) {
