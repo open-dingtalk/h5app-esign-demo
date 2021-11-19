@@ -46,7 +46,8 @@ public class SuiteAuthCodeEventHandler implements EventHandler {
         } else {
             JSONObject bizData = eventJson.getJSONObject("biz_data");
             permanentCode = bizData.getString("permanent_code");
-            corpId = eventJson.getString("corp_id");
+            JSONObject authCorpInfo = bizData.getJSONObject("auth_corp_info");
+            corpId = authCorpInfo.getString("corpid");
         }
         activateSuite(permanentCode, corpId, suiteAccessToken);
 
